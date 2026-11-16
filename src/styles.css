@@ -1,0 +1,553 @@
+/*
+ * Tailwind v4 entry: config lives here, with no tailwind.config.js or PostCSS plugin.
+ * Keep every @import in this top block. Web fonts load via <link> in src/routes/__root.tsx.
+ */
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ───────────────────────── Yoin design system ─────────────────────────
+ * Palette (ONLY these colors + their opacity tints are allowed):
+ *   --plaster            گچ‌بری           #F7F0E0  page base, cards, text on dark buttons
+ *   --straw              کاغذ کاهی        #E9DCBC  aged paper, alt sections, inputs
+ *   --pomegranate-night  انار شب          #4A1220  headings, body text, doodle ink
+ *   --olive-dark         زیتون تیره       #3F4524  secondary text, footer, secondary buttons
+ *   --pomegranate-seed   دانه‌ی انار       #7B1E34  CTAs, links, focus rings
+ *   --olive-leaf         برگ زیتون        #7A7F3F  progress, doodle fills (large elements only)
+ *   --dried-rose         گل سرخ خشک       #A65260  hover, tags, stars (non-text / large text)
+ *   --sage               مریم‌گلی          #B3B88F  dividers, borders, spines
+ */
+:root {
+  --plaster: oklch(0.956 0.022 87.2);
+  --straw: oklch(0.897 0.045 88.5);
+  --pomegranate-night: oklch(0.282 0.085 9.5);
+  --olive-dark: oklch(0.376 0.052 117.4);
+  --pomegranate-seed: oklch(0.394 0.127 11.6);
+  --olive-leaf: oklch(0.578 0.087 112.8);
+  --dried-rose: oklch(0.545 0.111 11);
+  --sage: oklch(0.768 0.056 113.4);
+
+  /* Warm, ink-tinted shadows (rgba(74,18,32,0.08) equivalent) */
+  --shadow-paper: 0 1px 2px color-mix(in oklab, var(--pomegranate-night) 6%, transparent),
+    0 8px 24px -8px color-mix(in oklab, var(--pomegranate-night) 10%, transparent);
+  --shadow-paper-lift: 0 2px 4px color-mix(in oklab, var(--pomegranate-night) 6%, transparent),
+    0 16px 32px -12px color-mix(in oklab, var(--pomegranate-night) 14%, transparent);
+
+  --ease-calm: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* shadcn semantic mapping */
+  --radius: 0.75rem;
+  --background: var(--plaster);
+  --foreground: var(--pomegranate-night);
+  --card: var(--plaster);
+  --card-foreground: var(--pomegranate-night);
+  --popover: var(--plaster);
+  --popover-foreground: var(--pomegranate-night);
+  --primary: var(--pomegranate-seed);
+  --primary-foreground: var(--plaster);
+  --secondary: var(--olive-dark);
+  --secondary-foreground: var(--plaster);
+  --muted: var(--straw);
+  --muted-foreground: var(--olive-dark);
+  --accent: var(--dried-rose);
+  --accent-foreground: var(--plaster);
+  --destructive: var(--pomegranate-seed);
+  --destructive-foreground: var(--plaster);
+  --border: var(--sage);
+  --input: var(--sage);
+  --ring: var(--pomegranate-seed);
+  --chart-1: var(--olive-leaf);
+  --chart-2: var(--dried-rose);
+  --chart-3: var(--sage);
+  --chart-4: var(--olive-dark);
+  --chart-5: var(--pomegranate-seed);
+  --sidebar: var(--plaster);
+  --sidebar-foreground: var(--pomegranate-night);
+  --sidebar-primary: var(--pomegranate-seed);
+  --sidebar-primary-foreground: var(--plaster);
+  --sidebar-accent: var(--straw);
+  --sidebar-accent-foreground: var(--pomegranate-night);
+  --sidebar-border: var(--sage);
+  --sidebar-ring: var(--pomegranate-seed);
+}
+
+@theme inline {
+  --font-sans: "Estedad", "Vazirmatn", Tahoma, sans-serif;
+  --font-serif: "Fraunces", "Lora", Georgia, serif;
+  --font-hand: "Caveat", "Estedad", cursive;
+
+  --color-plaster: var(--plaster);
+  --color-straw: var(--straw);
+  --color-ink: var(--pomegranate-night);
+  --color-olive: var(--olive-dark);
+  --color-seed: var(--pomegranate-seed);
+  --color-leaf: var(--olive-leaf);
+  --color-rose: var(--dried-rose);
+  --color-sage: var(--sage);
+
+  --shadow-paper: var(--shadow-paper);
+  --shadow-paper-lift: var(--shadow-paper-lift);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+  }
+  body {
+    background-color: var(--plaster);
+    color: var(--pomegranate-night);
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.9;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  @media (min-width: 768px) {
+    body {
+      font-size: 18px;
+    }
+  }
+  :lang(en) body,
+  body:lang(en) {
+    line-height: 1.7;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 800;
+    line-height: 1.35;
+    color: var(--pomegranate-night);
+  }
+  /* English headings use the literary serif; Persian keeps Estedad. Never letter-space Persian. */
+  [lang="en"] :is(h1, h2, h3, h4) {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--dried-rose) 30%, transparent);
+  }
+  :focus-visible {
+    outline: 2px solid var(--pomegranate-seed);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+/* ───────────── Paper surface: grain, fibers, foxing, aged vignette ───────────── */
+@utility paper-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  /* grain (feTurbulence) + fibers (stretched turbulence) + sparse foxing speckles */
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.29  0 0 0 0 0.07  0 0 0 0 0.13  0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='520' height='520'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='0.004 0.09' numOctaves='2' seed='7'/><feColorMatrix values='0 0 0 0 0.70  0 0 0 0 0.72  0 0 0 0 0.56  0 0 0 0.7 0'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>");
+  background-size: 240px 240px, 520px 520px;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+}
+/* foxing gets its own, slightly stronger layer so the dots read as aged paper */
+@utility paper-foxing {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='900' height='900'><g fill='%23B3B88F'><circle cx='83' cy='121' r='1.2'/><circle cx='512' cy='58' r='1.6'/><circle cx='811' cy='444' r='1'/><circle cx='260' cy='712' r='1.8'/><circle cx='640' cy='840' r='1.1'/></g><g fill='%23E9DCBC'><circle cx='40' cy='420' r='2'/><circle cx='722' cy='277' r='1.8'/><circle cx='380' cy='360' r='1.5'/></g></svg>");
+  background-size: 900px 900px;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+}
+/* Yellowed page margins: the only gradient allowed in the design. */
+@utility paper-vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  box-shadow: inset 0 0 140px 10px color-mix(in oklab, var(--straw) 75%, transparent);
+  mix-blend-mode: multiply;
+}
+
+/* Faint ruled notebook lines (onboarding only) */
+@utility paper-ruled {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 35px,
+    color-mix(in oklab, var(--sage) 45%, transparent) 35px,
+    color-mix(in oklab, var(--sage) 45%, transparent) 36px
+  );
+}
+
+/* Paper card surface */
+@utility paper-card {
+  background-color: var(--plaster);
+  border: 1px solid var(--sage);
+  border-radius: 14px;
+  box-shadow: var(--shadow-paper);
+}
+@utility paper-card-lift {
+  transition: transform 400ms var(--ease-calm), box-shadow 400ms var(--ease-calm);
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-paper-lift);
+  }
+}
+
+/* Chapter-style small label above section titles */
+@utility chapter-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--olive-dark);
+  &::before,
+  &::after {
+    content: "";
+    width: 22px;
+    height: 1px;
+    background: var(--sage);
+  }
+}
+
+/* Running header / folio in the top corner of sections */
+@utility folio {
+  font-size: 12px;
+  color: color-mix(in oklab, var(--olive-dark) 80%, transparent);
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+
+/* Handwritten margin note (Caveat for Latin, Estedad light for Persian) */
+@utility margin-note {
+  font-family: var(--font-hand);
+  font-size: 22px;
+  line-height: 1.1;
+  color: var(--olive-dark);
+  &:lang(fa) {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+/* Text link with a hand-drawn squiggle underline on hover */
+@utility ink-link {
+  color: var(--pomegranate-seed);
+  font-weight: 500;
+  text-decoration: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='6' viewBox='0 0 24 6'><path d='M0 3 Q 3 0 6 3 T 12 3 T 18 3 T 24 3' fill='none' stroke='%237B1E34' stroke-width='1.4' stroke-linecap='round'/></svg>");
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+  background-size: 12px 0;
+  padding-bottom: 4px;
+  transition: background-size 350ms var(--ease-calm);
+  &:hover {
+    background-size: 12px 5px;
+  }
+}
+
+/* Margin rule running down the inline-start side of content */
+@utility margin-rule {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: max(16px, calc((100% - 1120px) / 2 - 28px));
+  width: 1px;
+  background: color-mix(in oklab, var(--sage) 40%, transparent);
+  pointer-events: none;
+}
+
+/* Visually blurred / redacted spoiler line */
+@utility spoiler-redacted {
+  filter: blur(5px);
+  user-select: none;
+}
+
+/* ───────────── Motion: calm reveal + doodles drawing themselves ───────────── */
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes fill-in {
+  to {
+    fill-opacity: var(--fill-op, 1);
+  }
+}
+@keyframes steam {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-3px);
+    opacity: 0.5;
+  }
+}
+
+@utility animate-page-in {
+  animation: page-in 700ms var(--ease-calm) both;
+}
+@utility animate-steam {
+  animation: steam 3.2s ease-in-out infinite;
+}
+/* Barely-there tail sway for the hero cat; pivots at the tail base. */
+@keyframes tail-sway {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+}
+@utility animate-tail {
+  transform-box: fill-box;
+  transform-origin: 0% 0%;
+  animation: tail-sway 7s ease-in-out infinite;
+}
+
+/* Reveal: only hidden once JS is ready, so SSR content is never invisible. */
+.reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 600ms var(--ease-calm), transform 600ms var(--ease-calm);
+}
+.reveal-ready [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Doodle draw-on: strokes use pathLength=1 */
+.reveal-ready .doodle-draw .ink-stroke {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.reveal-ready .doodle-draw [data-fill] {
+  fill-opacity: 0;
+}
+.reveal-ready .doodle-draw.is-drawn .ink-stroke {
+  animation: draw 1.6s var(--ease-calm) forwards;
+}
+.reveal-ready .doodle-draw.is-drawn [data-fill] {
+  animation: fill-in 800ms 900ms var(--ease-calm) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal-ready [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-ready .doodle-draw .ink-stroke {
+    stroke-dashoffset: 0;
+  }
+  .reveal-ready .doodle-draw [data-fill] {
+    fill-opacity: var(--fill-op, 1);
+  }
+}
+
+/* ───────────── Hero: open book spread ───────────── */
+/* Stacked page edges on both outer sides + a soft warm resting shadow */
+@utility book-spread {
+  border: 1px solid color-mix(in oklab, var(--sage) 70%, transparent);
+  box-shadow:
+    -3px 3px 0 -1px var(--plaster),
+    -3px 3px 0 0 var(--sage),
+    -6px 6px 0 -1px var(--plaster),
+    -6px 6px 0 0 color-mix(in oklab, var(--sage) 70%, transparent),
+    3px 3px 0 -1px var(--plaster),
+    3px 3px 0 0 var(--sage),
+    6px 6px 0 -1px var(--plaster),
+    6px 6px 0 0 color-mix(in oklab, var(--sage) 70%, transparent),
+    0 40px 60px -36px color-mix(in oklab, var(--pomegranate-night) 28%, transparent);
+}
+/* Soft warm centre gutter where the two pages meet */
+@utility book-gutter {
+  position: absolute;
+  inset-block: 0;
+  left: 50%;
+  width: 84px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in oklab, var(--pomegranate-night) 4%, transparent) 38%,
+    color-mix(in oklab, var(--pomegranate-night) 10%, transparent) 50%,
+    color-mix(in oklab, var(--pomegranate-night) 4%, transparent) 62%,
+    transparent
+  );
+  &::after {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    left: 50%;
+    width: 1px;
+    background: color-mix(in oklab, var(--sage) 60%, transparent);
+  }
+}
+@utility page-curl {
+  filter: drop-shadow(-2px -2px 3px color-mix(in oklab, var(--pomegranate-night) 12%, transparent));
+  transition: width 500ms var(--ease-calm), height 500ms var(--ease-calm);
+  &:hover {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+/* Yearly-goal progress styled like a bookmark ribbon (swallowtail end on the inline-end side) */
+@utility goal-ribbon {
+  border-radius: 3px;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 7px) 50%, 100% 100%, 0 100%);
+  [dir="rtl"] & {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 7px 50%);
+  }
+}
+
+/* ───────────── "Coming soon" lock (see src/lib/coming-soon.ts + ComingSoon.tsx) ─────────────
+ * Wrapper keeps the original element's box; the element is blurred + inert. The badge is a sharp
+ * sticker pinned to the inline-end top corner (left in RTL, right in LTR) and rendered into
+ * document.body, so no ancestor `filter: blur()` can soften it. Its top / inset-inline-end come
+ * from inline styles measured against the locked element. */
+@layer components {
+  .coming-soon {
+    position: relative;
+    display: inline-flex;
+    max-width: 100%;
+    vertical-align: middle;
+    cursor: not-allowed;
+  }
+  .coming-soon-locked {
+    filter: blur(2px);
+    opacity: 0.6;
+    pointer-events: none !important;
+    user-select: none;
+  }
+  .coming-soon-badge {
+    position: fixed;
+    z-index: 40;
+    pointer-events: none;
+    white-space: nowrap;
+    padding: 0.1rem 0.55rem 0.15rem;
+    border-radius: 999px;
+    border: 1.5px solid var(--plaster);
+    background: var(--pomegranate-seed);
+    color: var(--plaster);
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0;
+    box-shadow: var(--shadow-paper);
+    transform: rotate(6deg);
+  }
+  [dir="rtl"] .coming-soon-badge {
+    transform: rotate(-6deg);
+  }
+  .coming-soon-badge:lang(en) {
+    font-size: 11px;
+    letter-spacing: 0.02em;
+  }
+
+  /* Large version of the badge for a whole blurred card (the onboarding shelf form).
+   * Same look as .coming-soon-badge, scaled up and pinned to the card's inline-end top corner. */
+  .coming-soon-sticker {
+    position: absolute;
+    top: -1.1rem;
+    inset-inline-end: 0.75rem;
+    z-index: 30;
+    pointer-events: none;
+    white-space: nowrap;
+    padding: 0.2em 0.85em 0.3em;
+    border-radius: 999px;
+    border: 3px solid var(--plaster);
+    background: var(--pomegranate-seed);
+    color: var(--plaster);
+    font-family: var(--font-sans);
+    font-size: clamp(22px, 6vw, 34px);
+    font-weight: 800;
+    line-height: 1.5;
+    letter-spacing: 0;
+    box-shadow: var(--shadow-paper);
+    transform: rotate(6deg);
+  }
+  [dir="rtl"] .coming-soon-sticker {
+    transform: rotate(-6deg);
+  }
+  .coming-soon-sticker:lang(en) {
+    font-size: clamp(20px, 5.4vw, 30px);
+    letter-spacing: 0.02em;
+  }
+}

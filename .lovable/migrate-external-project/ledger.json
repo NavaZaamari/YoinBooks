@@ -1,0 +1,16 @@
+{
+  "source": "code-archive",
+  "capabilities": [
+    {"capability": "code", "source": "TanStack Start landing page (src/components/yoin, src/lib)", "outcome": "migrate", "status": "verified", "next_action": "none"},
+    {"capability": "schema", "source": "none detected", "outcome": "not-applicable", "status": "verified", "next_action": "none"},
+    {"capability": "records", "source": "none detected", "outcome": "not-applicable", "status": "verified", "next_action": "none"},
+    {"capability": "auth identities", "source": "AuthModal is UI-only, no provider wired", "outcome": "not-applicable", "status": "verified", "next_action": "Add Lovable Cloud auth when sign-up launches"},
+    {"capability": "authorization", "source": "none", "outcome": "not-applicable", "status": "verified", "next_action": "none"},
+    {"capability": "uploaded file bytes", "source": "public/Logo.svg only", "outcome": "migrate", "status": "verified", "next_action": "none"},
+    {"capability": "external providers", "source": "Google Fonts only", "outcome": "preserve", "status": "verified", "next_action": "none"},
+    {"capability": "public endpoints / callbacks / webhooks / schedules", "source": "none detected", "outcome": "not-applicable", "status": "verified", "next_action": "none"},
+    {"capability": "secrets", "source": "no environment variables referenced", "outcome": "not-applicable", "status": "verified", "next_action": "none"},
+    {"capability": "cutover", "source": "not published", "outcome": "none", "status": "verified", "next_action": "Publish when ready"},
+    {"capability": "verification", "source": "tests pass, desktop/tablet/mobile browser check, no console errors", "outcome": "verify", "status": "verified", "next_action": "none"}
+  ]
+}
