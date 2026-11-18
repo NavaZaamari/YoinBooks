@@ -60,7 +60,7 @@ export function FinalCta({ onAuth }: { onAuth: (m: AuthMode) => void }) {
 export function Footer() {
   const { t, n } = useLang();
   const hrefs = [
-    "https://www.instagram.com/yoinbooks/",
+    "https://www.instagram.com/yoinbook/",
     BOOKSHOP_URL,
 ];
   return (
