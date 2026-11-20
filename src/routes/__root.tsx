@@ -73,8 +73,44 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
   );
 }
 
+const yoinSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://yoinbook.com/#organization",
+      name: "YOIN",
+      alternateName: ["Yoin", "یوئین", "یوین", "یویین"],
+      url: "https://yoinbook.com/",
+      logo: {
+        "@type": "ImageObject",
+        "@id": "https://yoinbook.com/#logo",
+        url: "https://yoinbook.com/Logo.svg"
+      },
+      description: "در YOIN کتاب‌های تازه کشف کنید، کتابخانه شخصی خود را بسازید، مسیر مطالعه‌تان را دنبال کنید و تجربه خواندن را با دیگر کتاب‌دوستان به اشتراک بگذارید.",
+      sameAs: ["https://www.instagram.com/yoinbook/"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://yoinbook.com/#website",
+      url: "https://yoinbook.com/",
+      name: "YOIN",
+      alternateName: ["Yoin", "یوئین", "یوین", "یویین"],
+      publisher: { "@id": "https://yoinbook.com/#organization" },
+      inLanguage: ["fa-IR", "en"]
+    }
+  ]
+};
+
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(yoinSchema),
+      },
+    ],
     // Never add og:image or twitter:image here: every page would inherit the root's preview image.
     meta: [
       { charSet: "utf-8" },

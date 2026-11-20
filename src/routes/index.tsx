@@ -12,15 +12,46 @@ const TITLE = "یوئین | Yoin — قفسه‌ی کتاب‌های تو";
 const DESCRIPTION =
   "Yoin is a quiet reading community for Persian and English readers: shelve books, track your reading, set a yearly goal and see what other readers read.";
 
+
+const homeSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://yoinbook.com/#webpage",
+  url: "https://yoinbook.com/",
+  name: "یوئین | Yoin — قفسه‌ی کتاب‌های تو",
+  description: "در YOIN کتاب‌های تازه کشف کنید، کتابخانه شخصی خود را بسازید، مسیر مطالعه‌تان را دنبال کنید و تجربه خواندن را با دیگر کتاب‌دوستان به اشتراک بگذارید.",
+  isPartOf: { "@id": "https://yoinbook.com/#website" },
+  about: { "@id": "https://yoinbook.com/#organization" },
+  inLanguage: ["fa-IR", "en"]
+};
+
+
 export const Route = createFileRoute("/")({
   head: () => ({
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(homeSchema),
+      },
+    ],
     meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
+      { title: "یوئین | Yoin — قفسه‌ی کتاب‌های تو" },
+      {
+        name: "description",
+        content: "در YOIN کتاب‌های تازه کشف کنید، کتابخانه شخصی خود را بسازید، مسیر مطالعه‌تان را دنبال کنید و تجربه خواندن را با دیگر کتاب‌دوستان به اشتراک بگذارید."
+      },
       { property: "og:type", content: "website" },
+      { property: "og:title", content: "یوئین | Yoin — قفسه‌ی کتاب‌های تو" },
+      {
+        property: "og:description",
+        content: "در YOIN کتاب‌های تازه کشف کنید، کتابخانه شخصی خود را بسازید، مسیر مطالعه‌تان را دنبال کنید و تجربه خواندن را با دیگر کتاب‌دوستان به اشتراک بگذارید."
+      },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "یوئین | Yoin — قفسه‌ی کتاب‌های تو" },
+      {
+        name: "twitter:description",
+        content: "در YOIN کتاب‌های تازه کشف کنید، کتابخانه شخصی خود را بسازید، مسیر مطالعه‌تان را دنبال کنید و تجربه خواندن را با دیگر کتاب‌دوستان به اشتراک بگذارید."
+      },
     ],
   }),
   component: Index,
