@@ -62,7 +62,8 @@ export function Footer() {
   const hrefs = [
     "https://www.instagram.com/yoinbook/",
     BOOKSHOP_URL,
-];
+    "/blog",
+  ];
   return (
     <footer className="relative bg-olive text-plaster">
       <DeckleEdge className="text-olive" />

@@ -6,26 +6,41 @@ import { LangToggle, Logo, YButton } from "./primitives";
 export type AuthMode = "signup" | "login";
 
 /** Sticky paper-coloured header. On mobile the links collapse into a menu; Sign up stays visible. */
-export function Header({ onAuth }: { onAuth: (mode: AuthMode) => void }) {
+export function Header({
+  onAuth,
+  homePath = "",
+  blogActive = false,
+}: {
+  onAuth: (mode: AuthMode) => void;
+  homePath?: string;
+  blogActive?: boolean;
+}) {
   const { t } = useLang();
   const [open, setOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-30 border-b border-sage/50 bg-plaster/90 backdrop-blur-[6px]">
       <div className="mx-auto flex h-[72px] max-w-[1120px] items-center gap-4 px-5 md:px-8">
-        <a href="#top" aria-label="Yoin" className="shrink-0 rounded-[12px]">
+        <a href="/" aria-label="Yoin" className="shrink-0 rounded-[12px]">
           <Logo />
         </a>
 
         <nav aria-label={t.nav.menu} className="ms-6 hidden items-center gap-7 md:flex">
-          <a href="#features" className="ink-link text-[15px]">
+          <a href={`${homePath}#features`} className="ink-link text-[15px]">
             {t.nav.features}
           </a>
           <ComingSoon>
-            <a href="#bookshop" className="ink-link text-[15px]">
+            <a href={`${homePath}#bookshop`} className="ink-link text-[15px]">
               {t.nav.bookshop}
             </a>
           </ComingSoon>
+          <a
+            href="/blog"
+            aria-current={blogActive ? "page" : undefined}
+            className={`ink-link text-[15px] ${blogActive ? "font-bold" : ""}`}
+          >
+            {t.nav.blog}
+          </a>
         </nav>
 
         <div className="ms-auto flex items-center gap-2 md:gap-3">
@@ -48,7 +63,15 @@ export function Header({ onAuth }: { onAuth: (mode: AuthMode) => void }) {
             aria-label={open ? t.nav.close : t.nav.menu}
             onClick={() => setOpen((v) => !v)}
           >
-            <svg aria-hidden viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round">
+            <svg
+              aria-hidden
+              viewBox="0 0 24 24"
+              className="h-6 w-6"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1.8}
+              strokeLinecap="round"
+            >
               {open ? (
                 <>
                   <path d="M6 6.5 C10 10 14 14 18 17.5" />
@@ -67,16 +90,35 @@ export function Header({ onAuth }: { onAuth: (mode: AuthMode) => void }) {
       </div>
 
       {open ? (
-        <div id="mobile-menu" className="border-t border-sage/50 bg-plaster px-5 pt-3 pb-5 md:hidden">
+        <div
+          id="mobile-menu"
+          className="border-t border-sage/50 bg-plaster px-5 pt-3 pb-5 md:hidden"
+        >
           <nav aria-label={t.nav.menu} className="flex flex-col">
-            <a href="#features" onClick={() => setOpen(false)} className="py-3 text-ink">
+            <a
+              href={`${homePath}#features`}
+              onClick={() => setOpen(false)}
+              className="py-3 text-ink"
+            >
               {t.nav.features}
             </a>
             <ComingSoon className="self-start">
-              <a href="#bookshop" onClick={() => setOpen(false)} className="py-3 text-ink">
+              <a
+                href={`${homePath}#bookshop`}
+                onClick={() => setOpen(false)}
+                className="py-3 text-ink"
+              >
                 {t.nav.bookshop}
               </a>
             </ComingSoon>
+            <a
+              href="/blog"
+              aria-current={blogActive ? "page" : undefined}
+              onClick={() => setOpen(false)}
+              className="py-3 text-ink"
+            >
+              {t.nav.blog}
+            </a>
           </nav>
           <div className="mt-3 flex items-center justify-between gap-3 border-t border-sage/50 pt-4">
             <LangToggle />

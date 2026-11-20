@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="1200" height="780" role="img" aria-labelledby="t d">
+<title id="t">کتابی باز روی کاغذ کاهی</title>
+<desc id="d">کتابی باز با نشانک اناری و شاخه‌ی زیتون، کنار تلفنی خاموش</desc>
+<rect width="1200" height="780" fill="#E9DCBC"/>
+<ellipse cx="600" cy="655" rx="450" ry="34" fill="#4A1220" opacity=".07"/>
+<g stroke="#4A1220" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+<path d="M600 640 C 490 600 330 598 172 622 L 172 612 C 330 588 490 590 600 632 C 710 590 870 588 1028 612 L 1028 622 C 870 598 710 600 600 640 Z" fill="#B3B88F"/>
+<path d="M600 215 C 495 182 340 178 188 208 L 180 604 C 332 578 490 582 600 624 Z" fill="#F7F0E0"/>
+<path d="M600 215 C 705 182 860 178 1012 208 L 1020 604 C 868 578 710 582 600 624 Z" fill="#F7F0E0"/>
+<path d="M600 215 L 600 624" fill="none"/>
+</g>
+<g stroke="#B3B88F" stroke-width="5" stroke-linecap="round" fill="none"><path d="M248 268 C 340 262 450 264 548 272"/><path d="M652 272 C 750 264 860 262 952 268"/><path d="M248 302 C 340 296 450 298 548 306"/><path d="M652 306 C 750 298 860 296 952 302"/><path d="M248 336 C 340 330 450 332 548 340"/><path d="M652 340 C 750 332 860 330 952 336"/><path d="M248 370 C 340 364 450 366 548 374"/><path d="M652 374 C 750 366 860 364 952 370"/><path d="M248 404 C 340 398 450 400 548 408"/><path d="M248 438 C 340 432 450 434 548 442"/><path d="M652 442 C 750 434 860 432 952 438"/><path d="M248 472 C 340 466 450 468 548 476"/><path d="M652 476 C 750 468 860 466 952 472"/><path d="M248 506 C 340 500 450 502 548 510"/><path d="M652 510 C 750 502 860 500 952 506"/><path d="M248 540 C 340 534 450 536 548 544"/><path d="M652 544 C 750 536 860 534 840 540"/></g>
+<path d="M630 200 L 662 200 L 662 700 L 646 682 L 630 700 Z" fill="#7B1E34" stroke="#4A1220" stroke-width="3" stroke-linejoin="round"/>
+<g stroke="#4A1220" stroke-width="3" stroke-linecap="round" fill="none"><path d="M90 250 C 170 200 240 150 340 120"/></g>
+<g fill="#7A7F3F" stroke="#4A1220" stroke-width="2.5"><ellipse cx="150" cy="150" rx="26" ry="10" transform="rotate(-35 150 150)"/><ellipse cx="205" cy="128" rx="26" ry="10" transform="rotate(-60 205 128)"/><ellipse cx="250" cy="170" rx="26" ry="10" transform="rotate(20 250 170)"/><ellipse cx="120" cy="205" rx="26" ry="10" transform="rotate(-10 120 205)"/><ellipse cx="300" cy="140" rx="26" ry="10" transform="rotate(-30 300 140)"/><ellipse cx="190" cy="210" rx="26" ry="10" transform="rotate(25 190 210)"/></g>
+<g transform="rotate(-14 1090 640)"><rect x="1035" y="545" width="112" height="196" rx="18" fill="#3F4524" stroke="#4A1220" stroke-width="3"/><rect x="1049" y="562" width="84" height="150" rx="8" fill="#4A1220" opacity=".55"/></g>
+</svg>

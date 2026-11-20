@@ -14,4 +14,13 @@ describe("App routing", () => {
 
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
+
+  it("matches the blog index and article under the blog layout", () => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+
+    expect(router.matchRoutes("/blog").map((m) => m.routeId)).toEqual([rootRouteId, "/blog", "/blog/"]);
+    expect(
+      router.matchRoutes("/blog/why-reading-matters-in-the-digital-age").map((m) => m.routeId),
+    ).toEqual([rootRouteId, "/blog", "/blog/$slug"]);
+  });
 });

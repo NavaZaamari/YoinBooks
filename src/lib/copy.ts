@@ -1,6 +1,33 @@
-/** All landing-page copy, Persian first. Digits inside strings use {n} placeholders where needed. */
+/** Shared site copy. Editorial articles remain in their original Persian in either UI language. */
+import { articles } from "./blog-content";
+
+const blog = {
+  articles,
+  title: "وبلاگ یوئین",
+  seoTitle: "وبلاگ یوئین | درباره‌ی کتاب و زندگی با خواندن",
+  description: "در وبلاگ یوئین از کتاب خواندن، انتخاب و نقد کتاب و تجربه‌ی مشترک خواندن می‌نویسیم؛ یادداشت‌هایی برای یک جامعه کتاب‌خوانی کنجکاو.",
+  headline: "چند صفحه برای بیشتر خواندن.",
+  intro: "یادداشت‌هایی درباره‌ی کتاب‌ها و جایی که در زندگی‌مان دارند؛ برای مکث، کشف و گفت‌وگو.",
+  featured: "پیشنهاد تحریریه",
+  latest: "همه‌ی نوشته‌ها",
+  read: "خواندن مقاله",
+  minutes: (n: string) => `${n} دقیقه مطالعه`,
+  count: (n: string) => `${n} نوشته`,
+  home: "خانه‌ی یوئین",
+  breadcrumb: "مسیر صفحه",
+  contents: "در این مقاله",
+  back: "بازگشت به وبلاگ",
+  skip: "رفتن به محتوا",
+  note: "این نوشته به زبان فارسی منتشر شده است.",
+  endTitle: "خواندن، با هم ادامه پیدا می‌کند.",
+  endText: "با ایده‌ی قفسه‌های شخصی و تجربه‌ی مشترک خواندن در یوئین آشنا شوید.",
+  explore: "آشنایی با یوئین",
+  notFound: "این نوشته پیدا نشد",
+  notFoundText: "ممکن است نشانی تغییر کرده باشد. نوشته‌های منتشرشده را در وبلاگ ببینید.",
+};
 const fa = {
-  nav: { features: "امکانات", bookshop: "کتاب‌فروشی", login: "ورود", signup: "ثبت‌نام", menu: "منو", close: "بستن" },
+  blog,
+  nav: { blog: "وبلاگ", features: "امکانات", bookshop: "کتاب‌فروشی", login: "ورود", signup: "ثبت‌نام", menu: "منو", close: "بستن" },
   langToggle: "تغییر زبان",
   comingSoon: "به زودی",
   hero: {
@@ -87,7 +114,7 @@ const fa = {
     cta: "ثبت‌نام رایگان",
   },
   footer: {
-    links: ["اینستاگرام", "کتاب‌فروشی"],
+    links: ["اینستاگرام", "کتاب‌فروشی", "وبلاگ"],
     copy: (y: string) => `© ${y} یوئین. با عشق برای کتاب‌خوان‌ها.`,
     tagline: "جایی آرام برای کتاب‌خوان‌ها",
   },
@@ -123,7 +150,8 @@ const fa = {
 export type Dict = typeof fa;
 
 const en: Dict = {
-  nav: { features: "Features", bookshop: "Bookshop", login: "Log in", signup: "Sign up", menu: "Menu", close: "Close" },
+  blog,
+  nav: { blog: "Blog", features: "Features", bookshop: "Bookshop", login: "Log in", signup: "Sign up", menu: "Menu", close: "Close" },
   langToggle: "Change language",
   comingSoon: "Coming soon",
   hero: {
@@ -210,7 +238,7 @@ const en: Dict = {
     cta: "Sign up free",
   },
   footer: {
-    links: ["Instagram", "Bookshop"],
+    links: ["Instagram", "Bookshop", "Blog"],
     copy: (y: string) => `© ${y} Yoin. Made with love for readers.`,
     tagline: "A quiet place for readers",
   },
